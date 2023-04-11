@@ -1,0 +1,124 @@
+.pokemon-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.pokemon-card:hover {
+    transform: translateY(-10px);
+}
+
+.pokemon-card {
+    text-decoration: none;
+    color: black;
+    width: 300px;
+    height: 400px;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.pokemon-image-container {
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pokemon-image {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.pokemon-details-container {
+    padding: 20px;
+}
+
+.pokemon-number {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.pokemon-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.pokemon-types {
+    display: flex;
+    gap: 10px;
+}
+
+.pokemon-type {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-transform: capitalize;
+    background: #9bcc50;
+    color: #666;
+}
+.loading {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    max-width: 90%;
+    max-height: 90%;
+    overflow-y: auto;
+}
+
+.popup h2 {
+    margin-top: 0;
+}
+
+.popup-close {
+    margin-top: 10px;
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.pokemonDetailsContainer {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.button-pagination {
+    margin-right: 10px;
+    border-radius: 5px;
+    padding: 12px;
+    color: grey;
+    font-size: 18px;
+    background: yellow;
+    cursor: pointer;
+}
