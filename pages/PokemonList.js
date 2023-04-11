@@ -16,12 +16,13 @@ function PokemonList({ data }) {
 
     useEffect(() => {
         fetchpokemons({
-            variables: { first: 120 },
+            variables: { first: 200 },
             fetchPolicy: "network-only",
         }).then((response) => {
-            setrestPokemons(response.data.pokemons.slice(60, 120));
+            setrestPokemons(response.data.pokemons.slice(60, 200));
         });
-    }, []);
+    }, [currentPage > 3]);
+
     let newArray = firstData.concat(restPokemons);
 
     // Get current items
@@ -36,7 +37,6 @@ function PokemonList({ data }) {
     // Calculate total pages
     const totalPages = Math.ceil(newArray.length / itemsPerPage);
 
-    console.log(newArray, "final list");
     return (
         <>
             <div className="pokemon-list">
@@ -90,3 +90,12 @@ function PokemonList({ data }) {
 }
 
 export default PokemonList;
+
+// useEffect(() => {
+//     fetchpokemons({
+//         variables: { first: 120 },
+//         fetchPolicy: "network-only",
+//     }).then((response) => {
+//         setrestPokemons(response.data.pokemons.slice(60, 120));
+//     });
+// }, []);
