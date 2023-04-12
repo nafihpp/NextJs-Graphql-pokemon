@@ -153,7 +153,9 @@
 }
 .topContainer {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 .special-container {
     background-color: #30a7d7;
