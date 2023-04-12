@@ -9,24 +9,24 @@ const client = new ApolloClient({
     cache: new InMemoryCache(),
 });
 
-export default function PokemonDetail({ pokemon }) {
+export default function PokemonDetail({ singleData }) {
     const router = useRouter();
     const { name } = router.query;
     const [fetchSinglePokemon] = useLazyQuery(FETCHSINGLE);
-    const [singleData, setSingleData] = useState(null);
+    //const [singleData, setSingleData] = useState(null);
     const [popup, setPopup] = useState(false);
     const [version, setVersion] = useState(0);
 
-    useEffect(() => {
-        if (name) {
-            fetchSinglePokemon({
-                variables: { name },
-                fetchPolicy: "network-only",
-            }).then((response) => {
-                setSingleData(response.data.pokemon);
-            });
-        }
-    }, [name]);
+    // useEffect(() => {
+    //     if (name) {
+    //         fetchSinglePokemon({
+    //             variables: { name },
+    //             fetchPolicy: "network-only",
+    //         }).then((response) => {
+    //             setSingleData(response.data.pokemon);
+    //         });
+    //     }
+    // }, [name]);
 
     const handleEvolutionClick = () => {
         setPopup(!popup);
@@ -190,7 +190,7 @@ export async function getStaticPaths() {
         variables: { first: 20 },
     });
 
-    const paths = data.pokemons.map((pokemon) => ({
+    const paths = data.pokemons.slice(0, 20).map((pokemon) => ({
         params: { name: pokemon.name },
     }));
 
@@ -205,7 +205,7 @@ export async function getStaticProps({ params }) {
 
     return {
         props: {
-            pokemon: data.pokemon,
+            singleData: data.pokemon,
         },
     };
 }
