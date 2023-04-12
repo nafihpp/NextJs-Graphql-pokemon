@@ -1,4 +1,5 @@
 import { gql } from "@apollo/client";
+import { PokemonFragment, RecursivePokemonFragment } from "./fragment";
 
 export const FETCHPOKEMONS = gql`
     query Pokemons($first: Int!) {
@@ -38,27 +39,47 @@ export const FETCHSINGLE = gql`
     }
 `;
 
+// export const EVOLUTIONDETAILS = gql`
+//     query pokemon($id: String, $name: String) {
+//         pokemon(id: $id, name: $name) {
+//             id
+//             name
+//             ...RecursivePokemonFragment
+//         }
+//     }
+//     ${RecursivePokemonFragment}
+// `;
+
 export const EVOLUTIONDETAILS = gql`
-    query pokemon($name: String) {
-        pokemon(name: $name) {
-            id
-            name
-            evolutions {
-                id
-                number
-                name
-                classification
-                types
-                resistant
-                weaknesses
-                fleeRate
-                maxCP
-                evolutions {
-                    ...RecursivePokemonFragment
-                }
-                maxHP
-                image
-            }
+    query pokemon($id: String, $name: String) {
+        pokemon(id: $id, name: $name) {
+            ...PokemonFragment
         }
     }
+    ${PokemonFragment}
 `;
+
+// export const EVOLUTIONDETAILS = gql`
+//     query pokemon($name: String) {
+//         pokemon(name: $name) {
+//             id
+//             name
+//             evolutions {
+//                 id
+//                 number
+//                 name
+//                 classification
+//                 types
+//                 resistant
+//                 weaknesses
+//                 fleeRate
+//                 maxCP
+//                 evolutions {
+//                     ...RecursivePokemonFragment
+//                 }
+//                 maxHP
+//                 image
+//             }
+//         }
+//     }
+// `;

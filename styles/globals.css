@@ -120,13 +120,18 @@
 }
 
 .popup-close {
-    margin-top: 10px;
-    background-color: #ff0000;
+    background-color: yellowgreen;
     color: #fff;
     border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
+    padding: 4px 5px;
+    display: flex;
     cursor: pointer;
+    border-radius: 50%;
+    font-size: 25px;
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    z-index: 1000;
 }
 
 .pokemonDetailsContainer {
@@ -154,8 +159,8 @@
 .topContainer {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 }
 .special-container {
     background-color: #30a7d7;
@@ -219,4 +224,8 @@
 .bordered-2 {
     border: 5px solid #dd2d51;
     border-radius: 50%;
+}
+.evolution-container {
+    display: flex;
+    justify-content: space-around;
 }

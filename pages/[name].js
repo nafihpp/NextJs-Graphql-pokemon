@@ -36,7 +36,7 @@ export default function PokemonDetail({ singleData }) {
         <>
             <div className="pokemonContainer" key={singleData?.id}>
                 <div className="topContianer">
-                    <h2 className="pokemon-number">{singleData?.number}</h2>
+                    <h2 className="pokemon-number">#{singleData?.number}</h2>
                     <h1 className="pokemon-name">{singleData?.name}</h1>
                     <div className="pokemon-types">
                         {singleData?.types?.map((type) => (
