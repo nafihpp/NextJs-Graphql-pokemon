@@ -21,21 +21,26 @@ function PokemonList({ data }) {
         }).then((response) => {
             setRemainingPokemons(response.data.pokemons.slice(60, 200));
         });
-    }, [fetchpokemons]);
+    }, []);
 
-    let newArray = firstData.concat(reminingPokemons);
+    let newStaticplusRealTimeData = firstData.concat(reminingPokemons);
 
     // Get current items
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
 
-    const currentItems = newArray.slice(indexOfFirstItem, indexOfLastItem);
+    const currentItems = newStaticplusRealTimeData.slice(
+        indexOfFirstItem,
+        indexOfLastItem
+    );
 
     // Change page
     const onPageChange = (pageNumber) => setCurrentPage(pageNumber);
 
     // Calculate total pages
-    const totalPages = Math.ceil(newArray.length / itemsPerPage);
+    const totalPages = Math.ceil(
+        newStaticplusRealTimeData.length / itemsPerPage
+    );
 
     return (
         <>
