@@ -1,5 +1,4 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client";
-import PokemonList from "./PokemonList";
 import { FETCHPOKEMONS } from "../utils/service";
 
 const client = new ApolloClient({

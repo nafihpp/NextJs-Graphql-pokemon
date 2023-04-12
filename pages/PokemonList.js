@@ -11,19 +11,19 @@ function PokemonList({ data }) {
     const itemsPerPage = 20;
 
     useEffect(() => {
-        setFirstData(data.pokemons);
-    }, [data.pokemons]);
+        setFirstData(data?.pokemons);
+    }, [data?.pokemons]);
 
     useEffect(() => {
         fetchpokemons({
             variables: { first: 200 },
             fetchPolicy: "network-only",
         }).then((response) => {
-            setRemainingPokemons(response.data.pokemons.slice(60, 200));
+            setRemainingPokemons(response?.data?.pokemons?.slice(60, 200));
         });
     }, []);
 
-    let newStaticplusRealTimeData = firstData.concat(reminingPokemons);
+    let newStaticplusRealTimeData = firstData?.concat(reminingPokemons);
 
     // Get current items
     const indexOfLastItem = currentPage * itemsPerPage;
@@ -45,16 +45,16 @@ function PokemonList({ data }) {
     return (
         <>
             <div className="pokemon-list">
-                {currentItems.map((pokemon) => (
+                {currentItems?.map((pokemon) => (
                     <a
                         key={pokemon.id}
                         className="pokemon-card"
-                        href={`/${pokemon.name}`}
+                        href={`/${pokemon?.name}`}
                     >
                         <div className="pokemon-image-container">
                             <img
-                                src={pokemon.image}
-                                alt={pokemon.name}
+                                src={pokemon?.image}
+                                alt={pokemon?.name}
                                 className="pokemon-image"
                             />
                         </div>
@@ -62,9 +62,9 @@ function PokemonList({ data }) {
                             <h2 className="pokemon-number">
                                 #{pokemon.number}
                             </h2>
-                            <h2 className="pokemon-name">{pokemon.name}</h2>
+                            <h2 className="pokemon-name">{pokemon?.name}</h2>
                             <div className="pokemon-types">
-                                {pokemon.types.map((type, index) => (
+                                {pokemon?.types?.map((type, index) => (
                                     <h2
                                         key={type}
                                         className={`pokemon-type pokemon-type-${index} ${
