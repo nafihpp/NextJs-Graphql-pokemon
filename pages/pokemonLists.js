@@ -28,14 +28,15 @@ function PokemonList({ data }) {
     // Get current items
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-
     const currentItems = newStaticplusRealTimeData.slice(
         indexOfFirstItem,
         indexOfLastItem
     );
 
     // Change page
-    const onPageChange = (pageNumber) => setCurrentPage(pageNumber);
+    const onPageChange = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
 
     // Calculate total pages
     const totalPages = Math.ceil(

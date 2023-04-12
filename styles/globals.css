@@ -105,7 +105,7 @@
 }
 
 .popup-content {
-    background: url("https://assets.pokemon.com/static2/_ui/img/chrome/body_gray_bg.png");
+    background: url("../public/body_gray_bg.png");
     padding: 70px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
     max-width: 90%;

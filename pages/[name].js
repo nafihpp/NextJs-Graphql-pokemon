@@ -186,30 +186,18 @@ export default function PokemonDetail() {
     );
 }
 
-// export async function getStaticPaths() {
-//     const { data } = await useQuery(gql`
-//         query FetchPokemons {
-//             pokemons(first: 20) {
-//                 id
-//             }
-//         }
-//     `);
+export async function getStaticPaths() {
+    const { data } = await useQuery(gql`
+        query FetchPokemons {
+            pokemons(first: 20) {
+                id
+            }
+        }
+    `);
 
-//     const paths = data.pokemons.map((pokemon) => ({
-//         params: { id: pokemon.id },
-//     }));
+    const paths = data.pokemons.map((pokemon) => ({
+        params: { id: pokemon.name },
+    }));
 
-//     return { paths, fallback: true };
-// }
-
-// export async function getStaticProps({ params }) {
-//     const { id } = params;
-
-//     const { data } = await useQuery(POKEMON_QUERY, {
-//         variables: { id },
-//     });
-
-//     const pokemon = data.pokemon;
-
-//     return { props: { pokemon } };
-// }
+    return { paths, fallback: true };
+}
