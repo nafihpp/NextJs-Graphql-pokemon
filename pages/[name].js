@@ -26,7 +26,7 @@ export default function PokemonDetail() {
         }
     }, [name]);
 
-    if (loading) {
+    if (router.isFallback) {
         return <h1 className="loading">loading</h1>;
     }
 
