@@ -18,7 +18,7 @@ function popup({ setPopup, popup, name }) {
                 setLoading(false);
             });
         }
-        console.log("fetching happend");
+        console.log("fetching happening while popup clicked");
     }, [name]);
 
     return (
@@ -61,7 +61,7 @@ function popup({ setPopup, popup, name }) {
                         ))}
                     </div>
                 ) : (
-                    <p>loading</p>
+                    <p style={{ color: "#fff", fontSize: "20px" }}>loading</p>
                 )}
             </div>
         </div>
