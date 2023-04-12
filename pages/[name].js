@@ -1,34 +1,32 @@
 import { useRouter } from "next/router";
-import { useLazyQuery } from "@apollo/client";
+import { ApolloClient, InMemoryCache, useLazyQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
-import { FETCHSINGLE } from "../utils/service";
+import { FETCHPOKEMONS, FETCHSINGLE } from "../utils/service";
 import Popup from "./popup";
 
-export default function PokemonDetail() {
+const client = new ApolloClient({
+    uri: "https://graphql-pokemon2.vercel.app/",
+    cache: new InMemoryCache(),
+});
+
+export default function PokemonDetail({ pokemon }) {
     const router = useRouter();
     const { name } = router.query;
     const [fetchSinglePokemon] = useLazyQuery(FETCHSINGLE);
     const [singleData, setSingleData] = useState(null);
-    const [loading, setLoading] = useState(false);
     const [popup, setPopup] = useState(false);
     const [version, setVersion] = useState(0);
 
     useEffect(() => {
         if (name) {
-            setLoading(true);
             fetchSinglePokemon({
                 variables: { name },
                 fetchPolicy: "network-only",
             }).then((response) => {
                 setSingleData(response.data.pokemon);
-                setLoading(false);
             });
         }
     }, [name]);
-
-    if (router.isFallback) {
-        return <h1 className="loading">loading</h1>;
-    }
 
     const handleEvolutionClick = () => {
         setPopup(!popup);
@@ -187,17 +185,27 @@ export default function PokemonDetail() {
 }
 
 export async function getStaticPaths() {
-    const { data } = await useQuery(gql`
-        query FetchPokemons {
-            pokemons(first: 20) {
-                id
-            }
-        }
-    `);
+    const { data } = await client.query({
+        query: FETCHPOKEMONS,
+        variables: { first: 20 },
+    });
 
     const paths = data.pokemons.map((pokemon) => ({
-        params: { id: pokemon.name },
+        params: { name: pokemon.name },
     }));
 
-    return { paths, fallback: true };
+    return { paths, fallback: false };
+}
+
+export async function getStaticProps({ params }) {
+    const { data } = await client.query({
+        query: FETCHSINGLE,
+        variables: { name: params.name },
+    });
+
+    return {
+        props: {
+            pokemon: data.pokemon,
+        },
+    };
 }

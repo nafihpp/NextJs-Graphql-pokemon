@@ -105,12 +105,3 @@ function PokemonList({ data }) {
 }
 
 export default PokemonList;
-
-// useEffect(() => {
-//     fetchpokemons({
-//         variables: { first: 120 },
-//         fetchPolicy: "network-only",
-//     }).then((response) => {
-//         setrestPokemons(response.data.pokemons.slice(60, 120));
-//     });
-// }, []);
