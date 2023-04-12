@@ -39,17 +39,6 @@ export const FETCHSINGLE = gql`
     }
 `;
 
-// export const EVOLUTIONDETAILS = gql`
-//     query pokemon($id: String, $name: String) {
-//         pokemon(id: $id, name: $name) {
-//             id
-//             name
-//             ...RecursivePokemonFragment
-//         }
-//     }
-//     ${RecursivePokemonFragment}
-// `;
-
 export const EVOLUTIONDETAILS = gql`
     query pokemon($id: String, $name: String) {
         pokemon(id: $id, name: $name) {
@@ -58,28 +47,3 @@ export const EVOLUTIONDETAILS = gql`
     }
     ${PokemonFragment}
 `;
-
-// export const EVOLUTIONDETAILS = gql`
-//     query pokemon($name: String) {
-//         pokemon(name: $name) {
-//             id
-//             name
-//             evolutions {
-//                 id
-//                 number
-//                 name
-//                 classification
-//                 types
-//                 resistant
-//                 weaknesses
-//                 fleeRate
-//                 maxCP
-//                 evolutions {
-//                     ...RecursivePokemonFragment
-//                 }
-//                 maxHP
-//                 image
-//             }
-//         }
-//     }
-// `;

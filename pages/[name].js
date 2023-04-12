@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import { ApolloClient, InMemoryCache, useLazyQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
 import { FETCHPOKEMONS, FETCHSINGLE } from "../utils/service";
-import Popup from "./popup";
+import Popup from "./Popup";
 
 const client = new ApolloClient({
     uri: "https://graphql-pokemon2.vercel.app/",
@@ -13,10 +13,10 @@ export default function PokemonDetail({ singleData }) {
     const router = useRouter();
     const { name } = router.query;
     const [fetchSinglePokemon] = useLazyQuery(FETCHSINGLE);
-    //const [singleData, setSingleData] = useState(null);
     const [popup, setPopup] = useState(false);
     const [version, setVersion] = useState(0);
 
+    //const [singleData, setSingleData] = useState(null);
     // useEffect(() => {
     //     if (name) {
     //         fetchSinglePokemon({

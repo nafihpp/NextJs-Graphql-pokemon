@@ -1,8 +1,8 @@
 import { useLazyQuery } from "@apollo/client";
 import React, { useEffect, useState } from "react";
-import { EVOLUTIONDETAILS, RecursivePokemonFragment } from "../utils/service";
+import { EVOLUTIONDETAILS } from "../utils/service";
 
-function popup({ setPopup, popup, name }) {
+function Popup({ setPopup, popup, name }) {
     const [fetchpokemonEvolution] = useLazyQuery(EVOLUTIONDETAILS);
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -52,7 +52,7 @@ function popup({ setPopup, popup, name }) {
                             <img src={data.image} />
                         </div>
                         {data?.evolutions?.map((evol) => (
-                            <div className="avatarsContainer">
+                            <div className="avatarsContainer" key={evol.id}>
                                 <h2>{evol.id}</h2>
                                 <p>{evol.name}</p>
                                 <p>{evol.number}</p>
@@ -68,4 +68,4 @@ function popup({ setPopup, popup, name }) {
     );
 }
 
-export default popup;
+export default Popup;
