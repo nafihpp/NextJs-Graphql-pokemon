@@ -21,7 +21,7 @@ function PokemonList({ data }) {
         }).then((response) => {
             setRemainingPokemons(response.data.pokemons.slice(60, 200));
         });
-    }, [currentPage]);
+    }, [fetchpokemons]);
 
     let newArray = firstData.concat(reminingPokemons);
 
