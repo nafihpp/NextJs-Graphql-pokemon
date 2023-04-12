@@ -1,5 +1,0 @@
-{
-    "version": 2,
-    "builds": [{ "src": "Dockerfile", "use": "@vercel/docker" }],
-    "routes": [{ "src": "/(.*)", "dest": "http://localhost:3000" }]
-}

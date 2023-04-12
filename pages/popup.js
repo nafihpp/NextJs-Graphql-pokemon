@@ -1,20 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { EVOLUTIONDETAILS } from "./service";
-import { useLazyQuery } from "@apollo/client";
+import React from "react";
 
 function popup({ setPopup, popup, name }) {
-    console.log(name);
-    const [fetchpokemonEvolution] = useLazyQuery(EVOLUTIONDETAILS);
-    useEffect(() => {
-        if (name) {
-            fetchpokemonEvolution({
-                variables: { name },
-                fetchPolicy: "network-only",
-            }).then((response) => {
-                console.log(response);
-            });
-        }
-    }, [name]);
+    // const [fetchpokemonEvolution] = useLazyQuery(EVOLUTIONDETAILS);
+    // useEffect(() => {
+    //     if (name) {
+    //         fetchpokemonEvolution({
+    //             variables: { name },
+    //             fetchPolicy: "network-only",
+    //         }).then((response) => {
+    //             console.log(response);
+    //         });
+    //     }
+    // }, [name]);
 
     return (
         <div className="popup">
