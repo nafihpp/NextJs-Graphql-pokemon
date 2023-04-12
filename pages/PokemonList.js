@@ -4,14 +4,14 @@ import { useLazyQuery } from "@apollo/client/react/hooks";
 import { FETCHPOKEMONS } from "./service";
 
 function PokemonList({ data }) {
-    const [restPokemons, setrestPokemons] = useState([]);
-    const [firstData, setFirstDta] = useState([]);
+    const [reminingPokemons, setRemainingPokemons] = useState([]);
+    const [firstData, setFirstData] = useState([]);
     const [fetchpokemons] = useLazyQuery(FETCHPOKEMONS);
     const [currentPage, setCurrentPage] = useState(1);
-    const [itemsPerPage, setItemsPerPage] = useState(20);
+    const itemsPerPage = 20;
 
     useEffect(() => {
-        setFirstDta(data.pokemons);
+        setFirstData(data.pokemons);
     }, []);
 
     useEffect(() => {
@@ -19,11 +19,11 @@ function PokemonList({ data }) {
             variables: { first: 200 },
             fetchPolicy: "network-only",
         }).then((response) => {
-            setrestPokemons(response.data.pokemons.slice(60, 200));
+            setRemainingPokemons(response.data.pokemons.slice(60, 200));
         });
-    }, [currentPage > 3]);
+    }, [currentPage]);
 
-    let newArray = firstData.concat(restPokemons);
+    let newArray = firstData.concat(reminingPokemons);
 
     // Get current items
     const indexOfLastItem = currentPage * itemsPerPage;
@@ -54,11 +54,20 @@ function PokemonList({ data }) {
                             />
                         </div>
                         <div className="pokemon-details-container">
-                            <h2 className="pokemon-number">{pokemon.number}</h2>
+                            <h2 className="pokemon-number">
+                                #{pokemon.number}
+                            </h2>
                             <h2 className="pokemon-name">{pokemon.name}</h2>
                             <div className="pokemon-types">
-                                {pokemon.types.map((type) => (
-                                    <h2 key={type} className="pokemon-type">
+                                {pokemon.types.map((type, index) => (
+                                    <h2
+                                        key={type}
+                                        className={`pokemon-type pokemon-type-${index} ${
+                                            pokemon?.types?.length === 1
+                                                ? "single-type"
+                                                : "null"
+                                        }`}
+                                    >
                                         {type}
                                     </h2>
                                 ))}
