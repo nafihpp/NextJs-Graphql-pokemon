@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useLazyQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
-import { FETCHSINGLE } from "./service";
+import { FETCHSINGLE } from "../utils/service";
 import Popup from "./popup";
 
 export default function PokemonDetail() {
