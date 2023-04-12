@@ -1,7 +1,7 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import PokemonList from "./pokemonList";
 import { FETCHPOKEMONS } from "./service";
-//
+
 const client = new ApolloClient({
     uri: "https://graphql-pokemon2.vercel.app/",
     cache: new InMemoryCache(),
