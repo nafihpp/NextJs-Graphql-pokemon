@@ -2,7 +2,7 @@ import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import { useEffect, useState } from "react";
 import { useLazyQuery } from "@apollo/client/react/hooks";
 import { FETCHPOKEMONS } from "./service";
-
+//
 function PokemonList({ data }) {
     const [reminingPokemons, setRemainingPokemons] = useState([]);
     const [firstData, setFirstData] = useState([]);
