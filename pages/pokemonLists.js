@@ -2,6 +2,7 @@ import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import { useEffect, useState } from "react";
 import { useLazyQuery } from "@apollo/client/react/hooks";
 import { FETCHPOKEMONS } from "../utils/service";
+import Link from "next/link";
 
 function PokemonList({ data }) {
     const [reminingPokemons, setRemainingPokemons] = useState([]);
@@ -42,15 +43,21 @@ function PokemonList({ data }) {
     const totalPages = Math.ceil(
         newStaticplusRealTimeData.length / itemsPerPage
     );
-
+    const queryParams = {
+        foo: "bar",
+        baz: 123,
+    };
     return (
         <>
             <div className="pokemon-list">
                 {currentItems?.map((pokemon) => (
-                    <a
+                    <Link
                         key={pokemon.id}
                         className="pokemon-card"
-                        href={`/${pokemon?.name}`}
+                        href={{
+                            pathname: `/${pokemon.name}`,
+                            query: { pokemonid: pokemon.number },
+                        }}
                     >
                         <div className="pokemon-image-container">
                             <img
@@ -79,7 +86,7 @@ function PokemonList({ data }) {
                                 ))}
                             </div>
                         </div>
-                    </a>
+                    </Link>
                 ))}
             </div>
             <p style={{ textAlign: "center" }}>Current Page: {currentPage}</p>
