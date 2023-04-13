@@ -82,6 +82,10 @@ function Popup({ setPopup, popup, name }) {
                                         className="avatar-image"
                                     />
                                 </div>
+                            </div>
+                        ))}
+                        {data?.evolutions?.map((evol) => (
+                            <div key={evol.number}>
                                 {evol.number == "002" ? (
                                     <div className="evolution-arrow">
                                         <svg
