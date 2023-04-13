@@ -11,8 +11,7 @@ const client = new ApolloClient({
 
 export default function PokemonDetail({ singleData }) {
     const router = useRouter();
-    const { name } = router.query;
-    const { pokemonid } = router.query;
+    const { name, pokemonid } = router.query;
     const [fetchSinglePokemon] = useLazyQuery(FETCHSINGLE);
     const [popup, setPopup] = useState(false);
     const [version, setVersion] = useState(0);
@@ -31,6 +30,10 @@ export default function PokemonDetail({ singleData }) {
             });
         }
     }, [pokemonid]);
+
+    if (loading) {
+        return <h1 style={{ textAlign: "center" }}>loading</h1>;
+    }
 
     const handleEvolutionClick = () => {
         setPopup(!popup);
@@ -56,6 +59,7 @@ export default function PokemonDetail({ singleData }) {
                             ))}
                         </div>
                     </div>
+                    {console.log("server static")}
                     <div className="pokemon-cardBig">
                         <div className="pokemon-image-container-big">
                             <img
@@ -179,7 +183,7 @@ export default function PokemonDetail({ singleData }) {
                             </div>
                         </div>
                     </div>
-                    <div className="evolution-container">
+                    <div className="evolution-button-container">
                         <button
                             className="evolution-button"
                             onClick={handleEvolutionClick}
@@ -193,6 +197,7 @@ export default function PokemonDetail({ singleData }) {
                     <div className="topContianer">
                         <h2 className="pokemon-number">
                             #{singleRealData?.number}
+                            {console.log("not server side rendeed")}
                         </h2>
                         <h1 className="pokemon-name">{singleRealData?.name}</h1>
                         <div className="pokemon-types">
@@ -329,7 +334,7 @@ export default function PokemonDetail({ singleData }) {
                             </div>
                         </div>
                     </div>
-                    <div className="evolution-container">
+                    <div className="evolution-button-container">
                         <button
                             className="evolution-button"
                             onClick={handleEvolutionClick}
