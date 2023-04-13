@@ -43,7 +43,7 @@ export default function PokemonDetail({ singleData }) {
         <>
             {pokemonid <= 20 ? (
                 <div className="pokemonContainer" key={singleData?.id}>
-                    <div className="topContianer">
+                    <div className="top-containerr">
                         <h2 className="pokemon-number">
                             #{singleData?.number}
                         </h2>
@@ -194,7 +194,7 @@ export default function PokemonDetail({ singleData }) {
                 </div>
             ) : (
                 <div className="pokemonContainer" key={singleRealData?.id}>
-                    <div className="topContianer">
+                    <div className="top-containerr">
                         <h2 className="pokemon-number">
                             #{singleRealData?.number}
                             {console.log("not server side rendeed")}

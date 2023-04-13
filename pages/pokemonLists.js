@@ -4,8 +4,6 @@ import { useLazyQuery } from "@apollo/client/react/hooks";
 import { FETCHPOKEMONS } from "../utils/service";
 import Link from "next/link";
 
-let currentItems = [];
-
 function PokemonList({ data }) {
     const [reminingPokemons, setRemainingPokemons] = useState([]);
     const [firstData, setFirstData] = useState([]);
@@ -31,20 +29,10 @@ function PokemonList({ data }) {
     // Get current items
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    currentItems = newStaticplusRealTimeData.slice(
+    const currentItems = newStaticplusRealTimeData.slice(
         indexOfFirstItem,
         indexOfLastItem
     );
-
-    function surprise(PassedArray) {
-        const shuffled = PassedArray.sort(() => Math.random() - 0.5);
-        currentItems = shuffled;
-    }
-
-    function surprise(PassedArray) {
-        const shuffled = PassedArray.sort(() => Math.random() - 0.5);
-        currentItems = shuffled;
-    }
 
     // Change page
     const onPageChange = (pageNumber) => {
@@ -58,13 +46,6 @@ function PokemonList({ data }) {
 
     return (
         <>
-            <button
-                onClick={(e) => {
-                    surprise(currentItems);
-                }}
-            >
-                surprise Me
-            </button>
             <div className="pokemon-list">
                 {currentItems?.map((pokemon) => (
                     <Link
