@@ -18,3 +18,9 @@ Include a button to open a popup showing the Pokemon's evolutions.
 Query evolution data only when the button is clicked, not beforehand.
 Refer to https://www.pokemon.com/us/pokedex/bulbasaur for an example of a Pokemon detail page.
 Statically render the detail pages for the first 20 Pokemon at build time.
+
+![snipbuycep](https://github.com/nafihpp/buyceps-NextJs-Graphql/assets/49452140/93bca5e8-2c1f-4055-bb02-e97c79c29cfa)
+![snippingbuycee](https://github.com/nafihpp/buyceps-NextJs-Graphql/assets/49452140/ea34515b-a7f8-48a2-9658-004e38ec3726)
+![snippingbuycepppp](https://github.com/nafihpp/buyceps-NextJs-Graphql/assets/49452140/7202a0fa-0d0c-42e8-910b-a239d65a99a1)
+![mobile (2)](https://github.com/nafihpp/buyceps-NextJs-Graphql/assets/49452140/91daf89c-d864-405d-a4e7-05ce09717014)
+
